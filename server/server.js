@@ -3,7 +3,7 @@ const app = express();
 const port = 4000;
 
 const bodyParser = require('body-parser');
-const helpers = require('./helpers.js');
+const renderUtils = require('./renderUtils.js');
 
 app.use(bodyParser.json());
 
@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 
 app.post('/getMap', (req, res) => {
   console.log('called', req.body);
-  let map = helpers.renderNewMap(req.body.walls);
+  let map = renderUtils.renderNewMap(req.body.walls);
   res.send(map);
 });
 
