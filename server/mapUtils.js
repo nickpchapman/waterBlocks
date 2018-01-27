@@ -15,12 +15,11 @@ const mapUtils = {
   },
 
   editMap: (counter, map, newVal) => {
-    let count = counter.slice();
     for (let i = 0; i < map[0].length; i++) {
       for (let j = map.length - 1; j >= 0; j-- ) {
-        if (map[j][i] === 0 && count[i]) {
+        if (map[j][i] === 0 && counter[i]) {
           map[j][i] = newVal;
-          count[i]--;
+          counter[i]--;
         }
       }
     }

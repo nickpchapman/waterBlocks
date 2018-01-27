@@ -1,5 +1,6 @@
 const calcs = require('./calcs.js');
 const mapUtils = require('./mapUtils');
+
 const renderUtils = {
 
   renderBlocks: (walls, map) => {
@@ -22,8 +23,7 @@ const renderUtils = {
     let blankMap = mapUtils.createMap(walls);
     let blocksMap = renderUtils.renderBlocks(walls, blankMap);
     let blocksWaterMap = renderUtils.renderWater(water, blocksMap);
-    let flanksMap = renderUtils.renderFlanks(water, blocksWaterMap)
-    return flanksMap;
+    return renderUtils.renderFlanks(water, blocksWaterMap);
   }
 };
 
