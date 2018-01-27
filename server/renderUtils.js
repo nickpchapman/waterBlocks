@@ -16,10 +16,6 @@ const renderUtils = {
     return mapUtils.boldColumn(flanks[1] - 1, tempMap, 3);
   },
 
-  renderMapLabel: (map) => {
-
-  },
-
   renderNewMap: wallsStr => {
     let walls = wallsStr.split(',');
     let water = calcs.getWaterBlocks(walls);
@@ -27,7 +23,7 @@ const renderUtils = {
     let blocksMap = renderUtils.renderBlocks(walls, blankMap);
     let blocksWaterMap = renderUtils.renderWater(water, blocksMap);
     let flanksMap = renderUtils.renderFlanks(water, blocksWaterMap)
-    console.log(flanksMap);
+    return flanksMap;
   }
 };
 
