@@ -1,0 +1,20 @@
+.square {
+  background: #fff;
+  border: 1px solid #000;
+  height: 40px;
+  width: 40px;
+  float: left;
+  margin: -1px;
+}
+
+.water {
+  background: #01FFFF;
+}
+
+.wall {
+  background: #B7B7B7;
+}
+
+.bold {
+  background: #000;
+}
