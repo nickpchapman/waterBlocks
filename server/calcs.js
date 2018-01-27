@@ -52,13 +52,6 @@ const calcs = {
     maxIndexes.push(maxSum)
     return maxIndexes
   },
-
-  //can remove
-  calcWaterWalls: walls => {
-    let waterBlocks = calcs.getWaterBlocks(walls);
-    let mostWater = calcs.findLargestSum(waterBlocks)
-    return mostWater;
-  }
 }
 
 module.exports = calcs;
