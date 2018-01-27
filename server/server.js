@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 
 app.post('/getMap', (req, res) => {
   console.log('called', req.body);
-  let map = helpers.createMap(req.body.walls);
+  let map = helpers.renderNewMap(req.body.walls);
   res.send(map);
 });
 
