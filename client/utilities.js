@@ -4,12 +4,20 @@ document.getElementById('submit')
   });
 
 const handleClick = () => {
-    let walls = document.getElementById('walls').value
-    getNewMap(walls)
+    let wallInfo = document.getElementById('walls').value
+    getNewMap(wallInfo);
 };
 
-const getNewMap = () => {
-
+const getNewMap = (walls) => {
+  axios.post('/getMap', {
+    walls: walls
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 };
 
 const renderMap = () => {
