@@ -22,9 +22,9 @@ const getNewMap = (walls) => {
 };
 
 const renderMap = (map) => {
-  //clear old map!!
+  let newMap = document.getElementById('map-anchor');
+  newMap.innerHTML='';
   for (let i = 0; i < map.length; i++) {
-    let newMap = document.getElementById('map-anchor');
     newMap.append(renderRow(map[i]));
   }
 };
