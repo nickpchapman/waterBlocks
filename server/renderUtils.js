@@ -4,17 +4,20 @@ const mapUtils = require('./mapUtils');
 const renderUtils = {
 
   renderBlocks: (walls, map) => {
-    return mapUtils.editMap(walls, map, 1);
+    return mapUtils.editMap(walls.slice(), map, 1);
   },
 
   renderWater: (water, map) => {
-    return mapUtils.editMap(water, map, 2);
+    return mapUtils.editMap(water.slice(), map, 2);
   },
 
   renderFlanks: (water, map) => {
     let flanks = calcs.getFlanks(water);
-    let tempMap = mapUtils.boldColumn(flanks[0] - 1, map, 3);
-    return mapUtils.boldColumn(flanks[1] - 1, tempMap, 3);
+    if (flanks[2]) {
+      let tempMap = mapUtils.boldColumn(flanks[0] - 1, map, 3);
+      return mapUtils.boldColumn(flanks[1] - 1, tempMap, 3);
+    }
+    return map;
   },
 
   renderNewMap: wallsStr => {
