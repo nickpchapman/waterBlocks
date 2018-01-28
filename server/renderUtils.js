@@ -21,7 +21,7 @@ const renderUtils = {
   },
 
   renderNewMap: wallsStr => {
-    let walls = wallsStr.split(',');
+    let walls = wallsStr.split(',').map(el => parseInt(el));
     let water = calcs.getWaterBlocks(walls);
     let blankMap = mapUtils.createMap(walls);
     let blocksMap = renderUtils.renderBlocks(walls, blankMap);
