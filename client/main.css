@@ -6,7 +6,7 @@
 
 .square {
   background: #fff;
-  border: 1px solid #000;
+  border: 1px solid #d6d6d6;
   height: 40px;
   width: 40px;
   float: left;
@@ -26,14 +26,17 @@
 
 .water {
   background: #01FFFF;
+  border: 1px solid #00d1d8
 }
 
 .wall {
   background: #B7B7B7;
+  border: 1px solid #a0a0a0
 }
 
 .bold {
   background: #000;
+  border: 1px solid #000
 }
 
 
