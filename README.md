@@ -57,9 +57,26 @@ const calcWaterWalls = (walls) => {
   let mostWater = findLargestSum(waterBlocks)
   return mostWater;
 } -->
+========== Water Blocks Problem Statment ==========
 
 
-============ Water Blocks Setup Notes ============
+You are given an input array where each element represents the height of a wall. The width of every tower is 1. It starts raining. How much water is collected between the walls?
+
+Find the two walls that collect the most water between them.
+
+
+============ Installation Instructions ============
+
+
+1) Clone git repo to your local machine
+2) Navigate to project folder in the command line
+3) Type 'npm install' to install dependencies
+3) Type 'node server/server.js' to start local server
+4) To view project open browser and navigate to 'localhost:4000'
+5) Once page loads, input comma separated string of numbers and hit submit to view a visual representation of the solution
+
+
+============= Water Blocks Setup Notes ============
 
 
 Overall Strategy:
@@ -75,16 +92,16 @@ example data flow:
 input walls: [5, 3, 4, 1, 7]
 
 map of walls and water:
-* === wall
-# === water
+1 === wall
+2 === water
 
-    *
-    *
-*###*
-*#*#*
-***#*
-***#*
-*****
+    1
+    1
+12221
+12121
+11121
+11121
+11111
 
 calculating water blocks at each position:
 wall index: 0
@@ -93,13 +110,13 @@ biggest wall left: 0
 biggest wall right: 7
 0 - 5 < 0 => water blocks added: 0, [0]
 
-    *
-    *
-*   *
-* * *
-*** *
-*** *
-*****
+    1
+    1
+1   1
+1 1 1
+111 1
+111 1
+11111
 
 wall index: 1
 wall size: 3
@@ -107,13 +124,13 @@ biggest wall left: 5
 biggest wall right: 7
 5 - 3 = 2 => water blocks added: 2, [0, 2]
 
-    *
-    *
-*#  *
-*#* *
-*** *
-*** *
-*****
+    1
+    1
+12  1
+121 1
+111 1
+111 1
+11111
 
 wall index: 2
 wall size: 4
@@ -121,13 +138,13 @@ biggest wall left: 5
 biggest wall right: 7
 5 - 4 = 1 => water blocks added: 3, [0, 2, 3]
 
-    *
-    *
-*## *
-*#* *
-*** *
-*** *
-*****
+    1
+    1
+122 1
+121 1
+111 1
+111 1
+11111
 
 wall index: 3
 wall size: 1
@@ -135,13 +152,13 @@ biggest wall left: 5
 biggest wall right: 7
 5 - 1 = 4 => water blocks added: 4, [0, 2, 3, 4]
 
-    *
-    *
-*###*
-*#*#*
-***#*
-***#*
-*****
+    1
+    1
+12221
+12121
+11121
+11121
+11111
 
 wall index: 4
 wall size: 7
@@ -149,14 +166,18 @@ biggest wall left: 5
 biggest wall right: 0
 5 - 7 < 0 => water blocks added: 0, [0, 2, 3, 4, 0]
 
-walls: [5, 3, 4, 1, 7]
+Intermeidate Array generated at this step:
 water blocks: [0, 2, 1, 4, 0]
 
-find two walls with largest amount of water between them:
-  - find largest sum of consecutive values greater than 0 in [0, 2, 1, 4, 0] => 7
 
-  - find position* of walls flanking this region
-  [flank, 2, 1, 4, flank] => [1, 5] *position is index + 1*
+Find two walls with largest amount of water between them:
+  - find largest sum of consecutive values greater than 0 in:
+   [0, 2, 1, 4, 0] => 7
+
+
+  - find position of walls flanking this region
+  [flank, 2, 1, 4, flank] => [1, 5]
+
 
 output: [flank1, flank2, sum] => [1, 5, 7]
 
