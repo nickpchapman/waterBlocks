@@ -1,4 +1,8 @@
-<!-- const findMaxWalls = (index, walls) => {
+<!--
+========== Original Code ==========
+
+
+const findMaxWalls = (index, walls) => {
   let maxLeft = 0;
   let maxRight = 0;
     for (let i = index - 1; i >= 0; i--){
@@ -95,13 +99,13 @@ map of walls and water:
 1 === wall
 2 === water
 
-    1
-    1
-12221
-12121
-11121
-11121
-11111
+        1
+        1
+    12221
+    12121
+    11121
+    11121
+    11111
 
 calculating water blocks at each position:
 wall index: 0
@@ -110,13 +114,13 @@ biggest wall left: 0
 biggest wall right: 7
 0 - 5 < 0 => water blocks added: 0, [0]
 
-    1
-    1
-1   1
-1 1 1
-111 1
-111 1
-11111
+        1
+        1
+    1   1
+    1 1 1
+    111 1
+    111 1
+    11111
 
 wall index: 1
 wall size: 3
@@ -124,13 +128,13 @@ biggest wall left: 5
 biggest wall right: 7
 5 - 3 = 2 => water blocks added: 2, [0, 2]
 
-    1
-    1
-12  1
-121 1
-111 1
-111 1
-11111
+        1
+        1
+    12  1
+    121 1
+    111 1
+    111 1
+    11111
 
 wall index: 2
 wall size: 4
@@ -138,13 +142,13 @@ biggest wall left: 5
 biggest wall right: 7
 5 - 4 = 1 => water blocks added: 3, [0, 2, 3]
 
-    1
-    1
-122 1
-121 1
-111 1
-111 1
-11111
+        1
+        1
+    122 1
+    121 1
+    111 1
+    111 1
+    11111
 
 wall index: 3
 wall size: 1
@@ -152,13 +156,13 @@ biggest wall left: 5
 biggest wall right: 7
 5 - 1 = 4 => water blocks added: 4, [0, 2, 3, 4]
 
-    1
-    1
-12221
-12121
-11121
-11121
-11111
+        1
+        1
+    12221
+    12121
+    11121
+    11121
+    11111
 
 wall index: 4
 wall size: 7
