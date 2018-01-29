@@ -4,7 +4,7 @@ let handleSubmit = document.getElementById('submit')
   });
 
 const handleClick = () => {
-    let wallInfo = document.getElementById('walls').value
+    let wallInfo = document.getElementById('walls-input').value
     getNewMap(wallInfo);
 };
 
