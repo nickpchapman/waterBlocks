@@ -9,7 +9,13 @@ app.use(bodyParser.json());
 app.use(express.static('client'))
 
 app.post('/getMap', (req, res) => {
-  res.send(renderUtils.renderNewMap(req.body.walls));
+  renderUtils.renderNewMap(req.body.walls, (err, map) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(map);
+    }
+  })
 });
 
 app.listen(port, console.log(`now live on port: ${port}!`));

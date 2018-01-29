@@ -22,16 +22,19 @@ const getNewMap = (walls) => {
 };
 
 const renderMap = (map) => {
+  let count = map.length;
   let newMap = document.getElementById('map-anchor');
   newMap.innerHTML='';
   for (let i = 0; i < map.length; i++) {
-    newMap.append(renderRow(map[i]));
+    newMap.append(renderRow(map[i], count));
+    count--;
   }
 };
 
-const renderRow = (row) => {
+const renderRow = (row, rowNum) => {
   let newSquares = document.createElement('div');
   newSquares.classList.add('row');
+  newSquares.append(renderBlock(rowNum.toString()));
   for (let i = 0; i < row.length; i++) {
     newSquares.append(renderBlock(row[i]));
   }
@@ -49,6 +52,9 @@ const renderBlock = (block) => {
     }
     if (block === 3) {
       newBlock.classList.add('bold');
+    }
+    if (typeof block === 'string') {
+      newBlock.innerHTML = block;
     }
     return newBlock;
 };

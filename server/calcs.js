@@ -15,7 +15,7 @@ const calcs = {
     return [maxLeft, maxRight];
   },
 
-  getWaterBlocks: walls => {
+  getWaterBlocks: (walls, callback) => {
     let waterBlocks = [];
     for (let i = 0; i < walls.length; i++) {
       let max = calcs.findMaxWalls(i, walls)
@@ -26,10 +26,10 @@ const calcs = {
         waterBlocks.push(0);
       }
     }
-    return waterBlocks
+    callback(null, waterBlocks);
   },
 
-  getFlanks: water => {
+  getFlanks: (water, callback) => {
     let maxSum = 0;
     let maxIndexes = [1, 1];
     let start = 1;
@@ -49,8 +49,8 @@ const calcs = {
         end = i + 2;
       }
     }
-    maxIndexes.push(maxSum)
-    return maxIndexes
+    maxIndexes.push(maxSum);
+    callback(null, maxIndexes);
   },
 }
 
