@@ -1,6 +1,6 @@
 const mapUtils = {
 
-  createMap: (walls, callback) => {
+  createMap: (walls) => {
     let n = walls.length;
     let m = Math.max(...walls) + 1;
     let newMap = [];
@@ -11,10 +11,10 @@ const mapUtils = {
       }
       newMap.push(row)
     }
-    callback(null, newMap);
+    return newMap;
   },
 
-  editMap: (counter, map, newVal, callback) => {
+  editMap: (counter, map, newVal) => {
     for (let i = 0; i < map[0].length; i++) {
       for (let j = map.length - 1; j >= 0; j-- ) {
         if (map[j][i] === 0 && counter[i]) {
@@ -23,16 +23,16 @@ const mapUtils = {
         }
       }
     }
-    callback(null, map);
+    return map;
   },
 
-  boldColumn: (col, map, newVal, callback) => {
+  boldColumn: (col, map, newVal) => {
     for (let i = map.length - 1; i >= 0; i--) {
       if (map[i][col]) {
         map[i][col] = newVal;
       }
     }
-    callback(null, map);
+    return map;
   }
 };
 

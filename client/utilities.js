@@ -32,13 +32,13 @@ const renderMap = (map) => {
 };
 
 const renderRow = (row, rowNum) => {
-  let newSquares = document.createElement('div');
-  newSquares.classList.add('row');
-  newSquares.append(renderBlock(rowNum.toString()));
+  let newRow = document.createElement('div');
+  newRow.classList.add('row');
+  newRow.append(renderBlock(rowNum.toString()));
   for (let i = 0; i < row.length; i++) {
-    newSquares.append(renderBlock(row[i]));
+    newRow.append(renderBlock(row[i]));
   }
-  return newSquares;
+  return newRow;
 };
 
 const renderBlock = (block) => {

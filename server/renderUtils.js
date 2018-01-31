@@ -4,79 +4,42 @@ const mapUtils = require('./mapUtils');
 const renderUtils = {
 
   renderBlocks: (walls, map, callback) => {
-    mapUtils.editMap(walls.slice(), map, 1, (err, newMap) => {
-      if (err) {
-        console.log(err);
-      } else {
-        callback(null, newMap);
-      }
-    });
+    let blockMap = mapUtils.editMap(walls.slice(), map, 1)
+    callback(null, blockMap);
   },
 
   renderWater: (walls, map, callback) => {
-    calcs.getWaterBlocks(walls, (err, water) => {
-      if (err) {
-        console.log(err)
-      } else {
-        mapUtils.editMap(water.slice(), map, 2, (err, waterMap) => {
-          if (err) {
-            console.log(err);
-          } else {
-            callback(null, water, waterMap);
-          }
-        });
-      }
-    });
+    let water = calcs.getWaterBlocks(walls);
+    let waterMap = mapUtils.editMap(water.slice(), map, 2);
+    callback(null, water, waterMap);
   },
 
   renderFlanks: (water, map, callback) => {
-    let flanks = calcs.getFlanks(water, (err, flanks) => {
-      if (err) {
-        console.log(err)
+    let flanks = calcs.getFlanks(water);
+      if (flanks[2]) {
+        let firstFlank = mapUtils.boldColumn(flanks[0] - 1, map, 3)
+        callback(null, mapUtils.boldColumn(flanks[1] - 1, firstFlank, 3))
       } else {
-        if (flanks[2]) {
-          mapUtils.boldColumn(flanks[0] - 1, map, 3, (err, oneFlank) => {
-            if (err) {
-              console.log(err);
-            } else {
-              mapUtils.boldColumn(flanks[1] - 1, oneFlank, 3, (err, twoFlanks) => {
-                if (err) {
-                  console.log(err);
-                } else {
-                  callback(null, twoFlanks);
-                }
-              });
-            }
-          });
-        } else {
-          callback(null, map);
-        }
+        return callback(null, map);
       }
-    });
   },
 
   renderNewMap: (wallsStr, callback) => {
     let walls = wallsStr.split(',').map(el => parseInt(el));
-
-    mapUtils.createMap(walls, (err, blankMap) => {
+    let blankMap = mapUtils.createMap(walls);
+    renderUtils.renderBlocks(walls, blankMap, (err, blocksMap) => {
       if (err) {
         console.log(err);
       } else {
-        renderUtils.renderBlocks(walls, blankMap, (err, blocksMap) => {
+        renderUtils.renderWater(walls, blocksMap, (err, water, blockWaterMap) => {
           if (err) {
             console.log(err);
           } else {
-            renderUtils.renderWater(walls, blocksMap, (err, water, blockWaterMap) => {
+            renderUtils.renderFlanks(water, blockWaterMap, (err, finalMap) => {
               if (err) {
                 console.log(err);
               } else {
-                renderUtils.renderFlanks(water, blockWaterMap, (err, finalMap) => {
-                  if (err) {
-                    console.log(err);
-                  } else {
-                    callback(null, finalMap);
-                  }
-                })
+                callback(null, finalMap);
               }
             });
           }
