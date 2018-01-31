@@ -1,4 +1,4 @@
-let handleSubmit = document.getElementById('submit')
+const handleSubmit = document.getElementById('submit')
   .addEventListener('click', () => {
     handleClick();
   });

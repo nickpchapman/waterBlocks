@@ -1,7 +1,7 @@
 {
   "name": "water-blocks",
   "version": "1.0.0",
-  "description": "<!-- const findMaxWalls = (index, walls) => {   let maxLeft = 0;   let maxRight = 0;     for (let i = index - 1; i >= 0; i--){       if (walls[i] > maxLeft) {         maxLeft = walls[i];       }     }     for (let i = index + 1; i < walls.length; i++){       if (walls[i] > maxRight) {         maxRight = walls[i];       }     }   return [maxLeft, maxRight]; }",
+  "description": "This is a visual representation of the common 'find max water blocks' problem",
   "main": "client/index.html",
   "scripts": {
     "test": "test"
